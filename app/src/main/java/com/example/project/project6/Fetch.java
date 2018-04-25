@@ -115,10 +115,17 @@ public class Fetch {
                 String title = currentNews.getString("webTitle");
                 String url = currentNews.getString("webUrl");
                 String section = currentNews.getString("sectionName");
-                String date=currentNews.getString("webPublicationDate");
+                String date = currentNews.getString("webPublicationDate");
+                JSONArray tags = currentNews.getJSONArray("tags");
+                for (int j = 0; j < tags.length(); j++) {
+                    JSONObject currentTag = tags.getJSONObject(i);
+                    String firstName = currentTag.getString("firstName");
+                    String lastName = currentTag.getString("lastName");
+                    String author = firstName + " " + lastName;
+                    News news = new News(title, url, section, author, date);
+                    newsList.add(news);
+                }
 
-                News news = new News(title, url,section,date);
-                newsList.add(news);
             }
 
         } catch (JSONException e) {

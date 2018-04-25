@@ -29,10 +29,10 @@ public class NewsAdapter extends ArrayAdapter<News> {
         }
         News currentNews = getItem(position);
         TextView title = (TextView) listItemView.findViewById(R.id.title);
-        title.setText(currentNews.getmTitle());
+        title.setText(currentNews.getTitle());
         TextView section = (TextView) listItemView.findViewById(R.id.section);
-        section.setText(currentNews.getmSection());
-        switch(currentNews.getmSection()){
+        section.setText(currentNews.getSection());
+        switch(currentNews.getSection()){
             case "Politics": listItemView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.politics));break;
             case "Film": listItemView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.film));break;
             case "Football": listItemView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.football));break;
@@ -45,8 +45,9 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         }
         TextView author = (TextView) listItemView.findViewById(R.id.author);
-        author.setText(currentNews.getmAuthor());
-        String dateAndTime = currentNews.getmDate();
+        author.setText(currentNews.getAuthor());
+
+        String dateAndTime = currentNews.getDate();
         String date= dateAndTime.substring(0,10);
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.date);
         dateTextView.setText(date);

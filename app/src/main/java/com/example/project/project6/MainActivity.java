@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private static final String LOG_TAG = MainActivity.class.getName();
 
-    private static final String NewsURL = "http://content.guardianapis.com/search?api-key=test";
+    private static final String NewsURL = "http://content.guardianapis.com/search?api-key=test&show-tags=contributor";
 
     private static final int LOADER_ID = 1;
     private NewsAdapter mAdapter;

@@ -7,29 +7,25 @@ import java.util.List;
 
 public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
+    private String mUrl;
 
-        private static final String LOG_TAG = NewsLoader.class.getName();
+    public NewsLoader(Context context, String url) {
+        super(context);
+        mUrl = url;
+    }
 
-        private String mUrl;
+    @Override
+    protected void onStartLoading() {
+        forceLoad();
+    }
 
-
-        public NewsLoader(Context context, String url) {
-                super(context);
-                mUrl = url;
+    @Override
+    public List<News> loadInBackground() {
+        if (mUrl == null) {
+            return null;
         }
 
-        @Override
-        protected void onStartLoading() {
-                forceLoad();
-        }
-
-        @Override
-        public List<News> loadInBackground() {
-                if (mUrl == null) {
-                        return null;
-                }
-
-                List<News> news = Fetch.fetchNews(mUrl);
-                return news;
-        }
+        List<News> news = Fetch.fetchNews(mUrl);
+        return news;
+    }
 }
