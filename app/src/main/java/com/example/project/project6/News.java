@@ -20,7 +20,7 @@ public class News {
         mSection=section;
         mDate=date;
     }
-        public News(String title,  String section, String author,String date, String url ) {
+        public News(String title, String url, String section, String author,String date ) {
             mTitle= title;
             mSection = section;
             mAuthor=author;

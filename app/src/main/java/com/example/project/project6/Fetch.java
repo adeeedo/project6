@@ -24,8 +24,6 @@ public class Fetch {
     public static List<News> fetchNews(String requestUrl) {
 
         URL url = createUrl(requestUrl);
-
-
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
@@ -33,10 +31,7 @@ public class Fetch {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
 
-
         List<News> news = extractFeatureFromJson(jsonResponse);
-
-
         return news;
     }
 
@@ -75,7 +70,7 @@ public class Fetch {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the JSON results.", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -121,8 +116,6 @@ public class Fetch {
                 String url = currentNews.getString("webUrl");
                 String section = currentNews.getString("sectionName");
                 String date=currentNews.getString("webPublicationDate");
-
-
 
                 News news = new News(title, url,section,date);
                 newsList.add(news);
